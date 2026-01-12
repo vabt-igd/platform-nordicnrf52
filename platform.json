@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/platformio/platform-nordicnrf52.git"
+    "url": "https://github.com/vabt-igd/platform-nordicnrf52.git"
   },
   "version": "10.10.0",
   "frameworks": {
@@ -60,7 +60,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "https://github.com/maxgerhardt/framework-arduinoadafruitnrf52-seeed.git"
+      "version": "https://github.com/Seeed-Studio/Adafruit_nRF52_Arduino.git"
     },
     "framework-arduinonordicnrf5": {
       "type": "framework",
@@ -77,7 +77,7 @@
     "framework-arduino-mbed-seeed": {
       "type": "framework",
       "optional": true,
-      "version": "https://github.com/maxgerhardt/framework-mbed-seeed.git"
+      "version": "https://github.com/vabt/framework-mbed-seeed.git"
     },
     "framework-cmsis": {
       "type": "framework",
