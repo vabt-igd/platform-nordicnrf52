@@ -79,6 +79,45 @@ env.Replace(
 if env.get("PROGNAME", "program") == "program":
     env.Replace(PROGNAME="firmware")
 
+
+# =============================================================================
+# Fix for Adafruit nRFCrypto CC310 library path
+#
+# The Adafruit_nRFCrypto library specifies ldflags=-lnrf_cc310_0.9.13-no-interrupts
+# in its library.properties, but doesn't include the correct library path.
+# The library file is located in the cortex-m4/fpv4-sp-d16-hard/ subdirectory,
+# but the linker only searches in cortex-m4/. This fix adds the correct path
+# to LIBPATH so the linker can find the CC310 crypto library.
+# =============================================================================
+def add_cc310_libpath(env, platform):
+    """Add the CC310 crypto library path for nRF52 builds."""
+    framework_packages = [
+        "framework-arduinoadafruitnrf52-seeed",
+        "framework-arduinoadafruitnrf52",
+    ]
+
+    for pkg_name in framework_packages:
+        framework_dir = platform.get_package_dir(pkg_name)
+        if framework_dir:
+            cc310_path = join(
+                framework_dir,
+                "libraries",
+                "Adafruit_nRFCrypto",
+                "src",
+                "cortex-m4",
+                "fpv4-sp-d16-hard",
+            )
+            if isdir(cc310_path):
+                env.Append(LIBPATH=[cc310_path])
+                if int(ARGUMENTS.get("PIOVERBOSE", 0)):
+                    print("Added CC310 library path: %s" % cc310_path)
+                return
+
+
+add_cc310_libpath(env, platform)
+
+# =============================================================================
+
 env.Append(
     BUILDERS=dict(
         ElfToBin=Builder(
