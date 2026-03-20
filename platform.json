@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/vabt-igd/platform-nordicnrf52.git"
   },
-  "version": "10.10.0",
+  "version": "10.11.0",
   "frameworks": {
     "arduino": {
       "package": "framework-arduinonordicnrf5",
@@ -72,7 +72,7 @@
       "type": "framework",
       "optional": true,
       "owner": "platformio",
-      "version": "~4.4.1"
+      "version": "~4.5.0"
     },
     "framework-arduino-mbed-seeed": {
       "type": "framework",
@@ -116,7 +116,7 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "^1.63208.0"
+      "version": "^1.92000.0"
     },
     "tool-bossac-nordicnrf52": {
       "type": "uploader",
